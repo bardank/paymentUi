@@ -1,0 +1,496 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
+
+$white: #fff;
+$text-color: #1a3b5d;
+$background: #ddeefc;
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+body {
+    background: #ddeefc;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+* {
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+    }
+}
+
+.wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.form-container {
+    padding: 60px 0;
+    max-width: 570px;
+    margin: auto;
+    width: 100%;
+
+    @media screen and (max-width: $sm) {
+        max-width: calc(100% - 8%);
+        margin: 0 auto;
+    }
+}
+
+.form {
+    background: $white;
+    // box-shadow: 3px 13px 30px 0px rgba(21, 34, 67, 0.2);
+    box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
+    border-radius: 10px;
+    padding: 35px;
+    padding-top: 180px;
+
+    @media screen and (max-width: $sm) {
+        padding: 25px;
+        padding-top: 165px;
+    }
+    // @media screen and (max-width: 360px) {
+    //     padding: 15px;
+    //     padding-top: 165px;
+    // }
+}
+
+.card-form {
+    max-width: 570px;
+    margin: auto;
+    width: 100%;
+
+    @media screen and (max-width: 576px) {
+        margin: 0 auto;
+    }
+
+    &__inner {
+        background: $white;
+        // box-shadow: 3px 13px 30px 0px rgba(21, 34, 67, 0.2);
+        box-shadow: 0 30px 60px 0 rgba(90, 116, 148, 0.4);
+        border-radius: 10px;
+        padding: 35px;
+        padding-top: 180px;
+
+        @media screen and (max-width: 480px) {
+            padding: 25px;
+            padding-top: 165px;
+        }
+        @media screen and (max-width: 360px) {
+            padding: 15px;
+            padding-top: 165px;
+        }
+    }
+
+    &__row {
+        display: flex;
+        align-items: flex-start;
+        @media screen and (max-width: 480px) {
+            flex-wrap: wrap;
+        }
+    }
+
+    &__col {
+        flex: auto;
+        margin-right: 35px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: 480px) {
+            margin-right: 0;
+            flex: unset;
+            width: 100%;
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &.-cvv {
+            max-width: 150px;
+            @media screen and (max-width: 480px) {
+                max-width: initial;
+            }
+        }
+    }
+
+    &__group {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .card-input__input {
+            flex: 1;
+            margin-right: 15px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+    &__submit {
+        padding: 0.5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: 0.3rem;
+        height: 55px;
+        width: 100%;
+        background: #2364d2;
+        border: none;
+        font-weight: 500;
+        font-family: "Source Sans Pro", sans-serif;
+        box-shadow: 3px 10px 20px 0px rgb(35 100 210 / 30%);
+        color: $white;
+        margin-top: 20px;
+        cursor: pointer;
+        @media screen and (max-width: 480px) {
+            padding: 0.5rem 1rem;
+            font-size: 1.25rem;
+            border-radius: 0.3rem;
+            height: 35px;
+            margin-top: 12px;
+        }
+    }
+}
+.card__active {
+    .card__content {
+        transform: rotateY(0.5turn);
+    }
+}
+.card {
+    margin-bottom: -130px;
+
+    &__content {
+        max-width: 430px;
+        height: 270px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        width: 100%;
+        transition: all 0.8s cubic-bezier(0.71, 0.03, 0.56, 0.85);
+        transform-style: preserve-3d;
+        box-shadow: 0 20px 60px 0 rgb(14 42 90 / 55%);
+        border-radius: 15px;
+
+        @media screen and (max-width: $sm) {
+            max-width: 310px;
+            height: 190px;
+            width: 90%;
+        }
+    }
+    .__active {
+        .card__content {
+            transform: rotateY(0.5turn);
+        }
+    }
+    &__front,
+    &__back {
+        height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        backface-visibility: hidden;
+        border-radius: 15px;
+        z-index: 2;
+    }
+    &__front {
+        color: $white;
+    }
+    &__back {
+        color: $white;
+        transform: rotateY(0.5turn);
+    }
+    &__cover {
+        position: absolute;
+        height: 100%;
+        background-color: #1c1d27;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+        z-index: 2;
+        img {
+            max-width: 100%;
+            display: block;
+            max-height: 100%;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(6, 2, 29, 0.45);
+        }
+    }
+
+    &__wrapper {
+        height: 100%;
+        z-index: 4;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+    }
+    &__top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 0;
+        // background: red;
+        .chip {
+            height: 50px;
+        }
+        .card-type {
+            height: 60px;
+        }
+        @media screen and (max-width: $sm) {
+            .chip {
+                height: 22px;
+            }
+            .card-type {
+                height: 30px;
+            }
+        }
+    }
+    &__number {
+        font-size: 2rem;
+        font-weight: 500;
+        label {
+            .space {
+                margin-right: 30px;
+            }
+        }
+        @media screen and (max-width: $sm) {
+            font-size: 1.2rem;
+            label {
+                .space {
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+    &__details {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    &__label {
+        color: #d2cdcd;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 2px;
+        padding-bottom: 2px;
+        &__info {
+            color: $white;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        @media screen and (max-width: $sm) {
+            font-weight: 400;
+            font-size: 10px;
+            letter-spacing: 1px;
+            padding-bottom: 2px;
+            &__info {
+                color: $white;
+                font-size: 14px;
+                font-weight: 400;
+                letter-spacing: 1px;
+            }
+        }
+    }
+    .back-content {
+        height: 100%;
+        z-index: 4;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__band {
+        margin-top: 40px;
+        background: #000;
+        opacity: 0.8;
+        position: relative;
+        height: 60px;
+        @media screen and (max-width: $sm) {
+            margin-top: 20px;
+            height: 40px;
+        }
+    }
+    &__cvv {
+        padding: 1.2rem;
+        height: 100%;
+        width: 100%;
+        text-align: right;
+    }
+    &__cvvTitle {
+        padding-bottom: 2px;
+    }
+    &__cvvBand {
+        height: 50px;
+        background: $white;
+        border-radius: 4px;
+        color: #000;
+        span {
+            line-height: 50px;
+            margin-right: 5px;
+        }
+        @media screen and (max-width: $sm) {
+            height: 30px;
+            border-radius: 2px;
+            span {
+                line-height: 30px;
+                margin-right: 2.5px;
+            }
+        }
+    }
+    &__cardType {
+        margin-top: 30px;
+        height: 50px;
+        img {
+            max-width: 100%;
+            object-fit: contain;
+            max-height: 100%;
+            object-position: top right;
+        }
+        @media screen and (max-width: $sm) {
+            margin-top: 20px;
+            height: 25px;
+        }
+    }
+}
+
+.card-input{
+    margin-bottom: 20px;
+
+    &__label {
+        font-size: 14px;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #1a3b5d;
+        width: 100%;
+        display: block;
+        user-select: none;
+    }
+    &__input {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        box-shadow: none;
+        border: 1px solid #ced6e0;
+        transition: all 0.3s ease-in-out;
+        font-size: 18px;
+        padding: 5px 15px;
+        background: none;
+        color: #1a3b5d;
+        font-family: "Source Sans Pro", sans-serif;
+
+        &:hover,
+        &:focus {
+            border-color: #3d9cff;
+        }
+
+        &:focus {
+            box-shadow: 0px 10px 20px -13px rgba(32, 56, 117, 0.35);
+        }
+    }
+    @media screen and (max-width: $sm) {
+        margin-bottom: 12px;
+
+        &__label {
+            font-size: 14px;
+            margin-bottom: 3px;
+            font-weight: 500;
+            color: #1a3b5d;
+            width: 100%;
+        }
+        &__input {
+            height: 40px;
+            border-radius: 4px;
+            font-size: 16px;
+            padding: 3px 10px;
+        }
+    }
+}
+
+.slide-fade-up-enter-active {
+    transition: all 0.25s ease-in-out;
+    transition-delay: 0.1s;
+    position: relative;
+}
+.slide-fade-up-leave-active {
+    transition: all 0.25s ease-in-out;
+    position: absolute;
+}
+.slide-fade-up-enter {
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+}
+.slide-fade-up-leave-to {
+    opacity: 0;
+    transform: translateY(-15px);
+    pointer-events: none;
+}
+label {
+    height: 100%;
+}
+// span {
+//    animation: topToBottom 5s;
+// }
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+span {
+    /* This section calls the slideInFromLeft animation we defined above */
+    animation: 5s ease-out 0s 1 slideInFromLeft;
+}
+
+.slide-fade-right-enter-active {
+    transition: all 0.25s ease-in-out;
+    transition-delay: 0.1s;
+    position: relative;
+}
+.slide-fade-right-leave-active {
+    transition: all 0.25s ease-in-out;
+    position: absolute;
+}
+.slide-fade-right-enter {
+    opacity: 0;
+    transform: translateX(10px) rotate(45deg);
+    pointer-events: none;
+}
+.slide-fade-right-leave-to {
+    opacity: 0;
+    transform: translateX(-10px) rotate(45deg);
+    pointer-events: none;
+}
