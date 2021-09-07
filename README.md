@@ -1,4 +1,5 @@
 # PaymentUi
+[Demo](https://thirsty-kowalevski-cec7cb.netlify.app/)
 
 ![Gif](https://github.com/bardank/paymentUi/blob/master/public/assets/demo.gif)
 
